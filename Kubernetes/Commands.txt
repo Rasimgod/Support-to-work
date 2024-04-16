@@ -1,0 +1,136 @@
+# Получение информации о ресурсах
+kubectl get pods
+kubectl get services
+kubectl get nodes
+
+# Подробная информация о ресурсах
+kubectl describe pod <имя_пода>
+kubectl describe service <имя_сервиса>
+
+# Создание и обновление ресурсов из файлов конфигурации YAML или JSON
+kubectl create -f <файл_конфигурации.yaml>
+kubectl apply -f <файл_конфигурации.yaml>
+
+# Удаление ресурсов
+kubectl delete pod <имя_пода>
+kubectl delete service <имя_сервиса>
+
+# Выполнение команд в контейнере пода
+kubectl exec -it <имя_пода> -- команда
+
+# Изменение количества реплик пода
+kubectl scale --replicas=3 deployment/<имя_деплоймента>
+
+# Просмотр журналов контейнера в поде
+kubectl logs <имя_пода>
+
+# Редактирование ресурсов
+kubectl edit pod <имя_пода>
+
+# Управление процессом развертывания приложений
+kubectl rollout status deployment/<имя_деплоймента>
+kubectl rollout history deployment/<имя_деплоймента>
+kubectl rollout restart deployment/<имя_деплоймента>
+kubectl rollout pause deployment/<имя_деплоймента>
+kubectl rollout resume deployment/<имя_деплоймента>
+
+# Получение информации о кластере
+kubectl cluster-info
+
+# Управление метками ресурсов
+kubectl label pods <имя_пода> <ключ>=<значение>
+
+# Перенаправление портов с локальной машины на поды в кластере
+kubectl port-forward <имя_пода> <локальный_порт>:<удаленный_порт>
+
+# Получение информации о использовании ресурсов кластера
+kubectl top pods
+kubectl top nodes
+
+# Получение информации о событиях в кластере
+kubectl get events
+
+# Просмотр списка ресурсов в указанном namespace
+kubectl get pods -n <namespace>
+kubectl get services -n <namespace>
+kubectl get deployments -n <namespace>
+
+# Получение информации о конкретной ноде
+kubectl describe node <имя_ноды>
+
+# Получение информации о конкретном деплойменте
+kubectl describe deployment <имя_деплоймента>
+
+# Получение информации о конкретном сервисе
+kubectl describe service <имя_сервиса>
+
+# Получение информации о конкретном конфигмапе
+kubectl describe configmap <имя_конфигмапа>
+
+# Получение информации о конкретном секрете
+kubectl describe secret <имя_секрета>
+
+# Получение информации о состоянии хранилища etcd
+kubectl cluster-info dump
+
+# Создание и удаление толерантностей на нодах
+kubectl taint nodes <имя_ноды> ключ=значение:эффект
+kubectl taint nodes <имя_ноды> ключ:значение-
+
+# Создание и удаление ноды из кластера
+kubectl cordon <имя_ноды>
+kubectl uncordon <имя_ноды>
+kubectl drain <имя_ноды>
+
+# Установка приоритетов (priorities) для подов
+kubectl get pods --sort-by=.status.priority -o wide
+
+# Перевод кластера в режим обслуживания
+kubectl drain <имя_ноды> --ignore-daemonsets
+
+# Обновление API сервера Kubernetes
+kubeadm upgrade apply <версия>
+
+# Обновление версии kubelet и kubectl
+sudo apt-get update && sudo apt-get install -y kubelet kubeadm kubectl --allow-change-held-packages
+sudo apt-mark unhold kubelet kubeadm kubectl
+sudo apt-get update && sudo apt-get install -y kubelet kubeadm kubectl
+
+# Обновление кластера Kubernetes
+kubeadm upgrade plan
+kubeadm upgrade apply <версия>
+kubectl get nodes
+kubectl uncordon <имя_ноды>
+
+# Установка и обновление Helm
+helm repo add stable https://charts.helm.sh/stable
+helm repo update
+helm install my-release stable/<чарт>
+helm upgrade my-release stable/<чарт>
+
+# Создание деплоймента
+kubectl create deployment <имя_деплоймента> --image=<образ>
+
+# Создание сервиса для доступа к деплойменту
+kubectl expose deployment <имя_деплоймента> --port=<порт> --target-port=<порт_контейнера>
+
+# Создание конфигмапа из файла
+kubectl create configmap <имя_конфигмапа> --from-file=<путь_к_файлу>
+
+# Создание конфигмапа из литерала
+kubectl create configmap <имя_конфигмапа> --from-literal=<ключ>=<значение>
+
+# Создание секрета из файла
+kubectl create secret generic <имя_секрета> --from-file=<ключ>=<путь_к_файлу>
+
+# Создание секрета из литерала
+kubectl create secret generic <имя_секрета> --from-literal=<ключ>=<значение>
+
+# Создание горизонтального масштабирования (автоскалинга) для деплоймента
+kubectl autoscale deployment <имя_деплоймента> --min=<мин_реплик> --max=<макс_реплик> --cpu-percent=<процент_нагрузки>
+
+# Создание службы для доступа к ресурсу, находящемуся вне кластера (например, базе данных)
+kubectl create service <тип_службы> <имя_службы> --tcp=<порт_службы>:<порт_ресурса_вне_кластера>
+
+# Создание пода из файла конфигурации YAML
+kubectl create -f <файл_конфигурации.yaml>

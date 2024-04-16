@@ -1,0 +1,43 @@
+ifconfig:
+ifconfig -a: Показать все сетевые интерфейсы, включая выключенные.
+ifconfig eth0 down: Отключить сетевой интерфейс eth0.
+ifconfig eth0 up: Включить сетевой интерфейс eth0.
+
+ip:
+ip addr show: Показать информацию о сетевых интерфейсах.
+ip route show: Показать таблицу маршрутизации.
+ip link set eth0 down: Отключить сетевой интерфейс eth0.
+ip link set eth0 up: Включить сетевой интерфейс eth0.
+
+nmcli:
+nmcli connection show: Показать все сетевые подключения.
+nmcli device show: Показать информацию о сетевых устройствах.
+nmcli connection up "My Connection": Поднять сетевое подключение с именем "My Connection".
+nmcli connection down "My Connection": Выключить сетевое подключение с именем "My Connection".
+
+systemctl:
+systemctl restart NetworkManager: Перезапустить NetworkManager.
+
+ping:
+ping -c 4 google.com: Отправить 4 ICMP пакета на google.com.
+
+traceroute или tracepath:
+traceroute google.com: Отследить маршрут до google.com.
+tracepath google.com: Альтернативный вариант отслеживания маршрута.
+
+netstat:
+netstat -tuln: Показать все открытые TCP и UDP порты.
+
+ss:
+ss -tuln: Показать все открытые TCP и UDP порты.
+
+iptables или firewalld:
+iptables -L: Показать текущие правила брандмауэра.
+firewall-cmd --list-all: Показать все настройки брандмауэра firewalld.
+
+tcpdump:
+tcpdump -i eth0: Захватить и анализировать сетевой трафик на интерфейсе eth0.
+tcpdump -i eth0 port 80: Захватить и анализировать сетевой трафик на порту 80 на интерфейсе eth0.
+
+Wireshark:
+wireshark: Запустить графический анализатор сетевого трафика Wireshark.
